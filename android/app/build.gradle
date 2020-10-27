@@ -6,7 +6,6 @@ if (localPropertiesFile.exists()) {
     }
 }
 
-
 def flutterRoot = localProperties.getProperty('flutter.sdk')
 if (flutterRoot == null) {
     throw new FileNotFoundException("Flutter SDK not found. Define location with flutter.sdk in the local.properties file.")
@@ -24,7 +23,7 @@ if (flutterVersionName == null) {
 
 apply plugin: 'com.android.application'
 apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
-apply plugin: 'com.google.gms.google-services'
+
 android {
     compileSdkVersion 29
 
@@ -34,11 +33,12 @@ android {
 
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
-        applicationId "br.com.schneider.flash_chat"
+        applicationId "co.appbrewery.flash_chat"
         minSdkVersion 16
         targetSdkVersion 29
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
+
         multiDexEnabled true
     }
 
@@ -56,6 +56,9 @@ flutter {
 }
 
 dependencies {
-    implementation 'androidx.multidex:multidex:2.0.0'
-    implementation platform('com.google.firebase:firebase-bom:25.12.0')
+
+    implementation 'com.google.firebase:firebase-firestore:21.3.1'
+
 }
+
+apply plugin: 'com.google.gms.google-services'
